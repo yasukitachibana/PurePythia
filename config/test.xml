@@ -2,7 +2,7 @@
 
 <purePythia>
 
-  <nEvents> 100 </nEvents>
+  <nEvents> 48000 </nEvents>
   <pTHatMin>130</pTHatMin>
   <pTHatMax>140</pTHatMax>
   <hadronization>0</hadronization>

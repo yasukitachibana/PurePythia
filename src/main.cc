@@ -5,7 +5,6 @@
 //#######################################################
 bool run_code = false;
 std::string xml_filename;
-std::string input_dirname;
 std::string output_dirname;
 //#######################################################
 void Show();
@@ -58,12 +57,12 @@ void CheckArg(int argc, char **argv)
     xml_filename = "../config/test.xml";
     output_dirname = "./";
   }
-  else if (argc > 3)
+  else if (argc > 2)
   {
     std::cout << "-->run code<--" << std::endl;
     run_code = true;
     xml_filename = argv[1];
-    output_dirname = argv[3];
+    output_dirname = argv[2];
   }
   else
   {

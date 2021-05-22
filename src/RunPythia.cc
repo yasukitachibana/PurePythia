@@ -46,6 +46,7 @@ void RunPythia::SetXMLParameters()
   parameter_strings.push_back("Main:numberOfEvents = " + std::to_string(nEvents));
   parameter_strings.push_back("PhaseSpace:pTHatMin = " + pTHatMin);
   parameter_strings.push_back("PhaseSpace:pTHatMax = " + pTHatMax);
+  SetHadronizationParameters();
   parameter_strings.insert(parameter_strings.end(), xml_parameters.begin(), xml_parameters.end());
   //--
   for (auto param : parameter_strings)

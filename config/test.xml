@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<purePythia>
+
+  <nEvents> 100 </nEvents>
+  <pTHatMin>130</pTHatMin>
+  <pTHatMax>140</pTHatMax>
+  <hadronization>0</hadronization>
+
+  <Pythia>
+    <Item>Beams:eCM = 5020</Item>
+    <!-- -->
+    <Item>Beams:idA = 2212</Item>
+    <Item>Beams:idB = 2212</Item>
+    <Item>HardQCD:all = on</Item>
+    <!-- -->
+    <Item>PartonLevel:ISR = on</Item>
+    <Item>PartonLevel:MPI = on</Item>
+    <Item>PartonLevel:FSR = on</Item>
+    <!-- -->
+    <Item>PromptPhoton:all=on</Item>
+    <Item>WeakSingleBoson:all=off</Item>
+    <Item>WeakDoubleBoson:all=off</Item>
+  </Pythia>
+
+
+  <outputFiles>
+    <inputStyle>JetScapeAscii</inputStyle>
+    <events>
+      <headHadron>JetscapeHadronListBin</headHadron>
+      <headParton>JetscapeHadronListBin</headParton>
+      <join>_</join>
+      <tail>.out</tail>
+    </events>
+    <sigma>
+      <head>SigmaHardBin</head>
+      <join>_</join>
+      <tail>.out</tail>
+    </sigma>
+  </outputFiles>
+
+</purePythia>

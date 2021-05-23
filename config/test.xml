@@ -5,7 +5,7 @@
   <nEvents> 48000 </nEvents>
   <pTHatMin>130</pTHatMin>
   <pTHatMax>140</pTHatMax>
-  <hadronization>0</hadronization>
+  <hadronization>1</hadronization>
 
   <Pythia>
     <Item>Beams:eCM = 5020</Item>

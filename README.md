@@ -17,14 +17,6 @@ cmake ..
 make -j
 ```
 
-## Build the code
-```
-mkdir build
-cd build
-cmake ..
-make -j
-```
-
 ## Run the code
 In the build directory, 
 ```

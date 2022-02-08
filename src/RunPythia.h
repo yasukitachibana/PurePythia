@@ -18,16 +18,17 @@ public:
   void Exec();
 
 private:
-  Pythia8::Pythia pythia;
 
   const std::string xml_filename;
   const std::string output_dirname;
 
   void SetXMLParameters();
   void SetHadronizationParameters();  
+  void ExecOnePtHatBin(int i);
+
   std::vector<std::string> parameter_strings;
   int nEvents;
-  std::string pTHatMin, pTHatMax;
+  std::vector<std::string> pTHatMin, pTHatMax;
   int hadronization;
   // int running_mode;
   // std::vector< std::string > observables;

@@ -33,26 +33,22 @@ void RunPythia::Init()
 void RunPythia::SetXMLParameters()
 {
 
-  std::cout << "\n============================" << std::endl;
-  std::cout << "= Set Parameters in Pythia =" << std::endl;
-  std::cout << "----------------------------" << std::endl;
-
   nEvents = SetXML::Instance()->GetElementInt({"nEvents"});
-  pTHatMin = SetXML::Instance()->GetElementText({"pTHatMin"});
-  pTHatMax = SetXML::Instance()->GetElementText({"pTHatMax"});
+  pTHatMin = SetXML::Instance()->GetElementVectorText({"pTHatMin", "Item"});
+  pTHatMax = SetXML::Instance()->GetElementVectorText({"pTHatMax", "Item"});
   hadronization = SetXML::Instance()->GetElementInt({"hadronization"});
   std::vector<std::string> xml_parameters = SetXML::Instance()->GetElementVectorText({"Pythia", "Item"});
   //--
   parameter_strings.push_back("Main:numberOfEvents = " + std::to_string(nEvents));
-  parameter_strings.push_back("PhaseSpace:pTHatMin = " + pTHatMin);
-  parameter_strings.push_back("PhaseSpace:pTHatMax = " + pTHatMax);
   parameter_strings.insert(parameter_strings.end(), xml_parameters.begin(), xml_parameters.end());
   SetHadronizationParameters();
   //--
+  std::cout << "\n============================" << std::endl;
+  std::cout << "= Set Parameters in Pythia =" << std::endl;
+  std::cout << "----------------------------" << std::endl;
   for (auto param : parameter_strings)
   {
     std::cout << "- " << param << std::endl;
-    pythia.readString(param);
   }
   std::cout << "============================\n"
             << std::endl;
@@ -74,11 +70,28 @@ void RunPythia::SetHadronizationParameters()
   }
 }
 
-void RunPythia::Exec()
+void RunPythia::ExecOnePtHatBin(int i)
 {
+  Pythia8::Pythia pythia;
+  //----------------------------------------------------
+  // Set PtHat Min and Max
+  std::string string_pthatmin = "PhaseSpace:pTHatMin = " + pTHatMin[i];
+  std::string string_pthatmax = "PhaseSpace:pTHatMax = " + pTHatMax[i];
+  pythia.readString(string_pthatmin);
+  pythia.readString(string_pthatmax);
+  //----------------------------------------------------
+
+  //----------------------------------------------------
+  // Set Other Parameters
+  for (auto param : parameter_strings)
+  {
+    pythia.readString(param);
+  }
+  //----------------------------------------------------
+
   pythia.init();
-  std::string particle_list_filename = SetFile::Instance()->GetParticleListFileName(pTHatMin, pTHatMax, hadronization);
-  std::string sigma_filename = SetFile::Instance()->GetSigmaFileName(pTHatMin, pTHatMax);
+  std::string particle_list_filename = SetFile::Instance()->GetParticleListFileName(pTHatMin[i], pTHatMax[i], hadronization);
+  std::string sigma_filename = SetFile::Instance()->GetSigmaFileName(pTHatMin[i], pTHatMax[i]);
   //-
   std::ofstream f_particle, f_sigma;
   f_particle.open(particle_list_filename, std::ios::out);
@@ -86,7 +99,7 @@ void RunPythia::Exec()
   //-
   std::cout << "======================================================================================================" << std::endl;
   std::cout << "[RunPythia] Start RunPythia" << std::endl;
-  std::cout << "pTHat: " << pTHatMin << "-" << pTHatMax << " GeV/c" << std::endl;
+  std::cout << "pTHat: " << pTHatMin[i] << "-" << pTHatMax[i] << " GeV/c" << std::endl;
   std::cout << "output particle list file: " << particle_list_filename << std::endl;
   std::cout << "output sigma_hard file: " << sigma_filename << std::endl;
   std::cout << "======================================================================================================" << std::endl;
@@ -138,5 +151,13 @@ void RunPythia::Exec()
             << pythia.info.sigmaErr() << std::endl;
   //------------------
   f_particle.close();
-  f_sigma.close();  
+  f_sigma.close();
+}
+
+void RunPythia::Exec()
+{
+  for (int i = 0; i < pTHatMin.size(); i++)
+  {
+    ExecOnePtHatBin(i);
+  }
 }

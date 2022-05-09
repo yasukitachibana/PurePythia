@@ -20,6 +20,25 @@ RunPythia::~RunPythia()
   std::cout << "-$-Deleting RunPythia" << std::endl;
 }
 
+void RunPythia::Init(std::string pthat_min_manual, std::string pthat_max_manual)
+{
+  Init();
+  if( pthat_min_manual != "" && pthat_max_manual != "" )
+  {
+    pTHatMin = {pthat_min_manual};
+    pTHatMax = {pthat_max_manual};
+    std::cout << "\n================================" << std::endl;
+    std::cout << "= pt hat bins are manually set =" << std::endl;
+    std::cout << "- pthatbin: " 
+    << pthat_min_manual
+    << "-"
+    << pthat_max_manual 
+    << " GeV"
+    << std::endl;    
+    std::cout << "================================\n"<< std::endl;    
+  }
+}
+
 void RunPythia::Init()
 {
   std::cout << "=========================================================" << std::endl;

@@ -1,11 +1,12 @@
 #include "RunPythia.h"
 #include <iostream>
 
-
 //#######################################################
 bool run_code = false;
 std::string xml_filename;
 std::string output_dirname;
+std::string pthat_min_manual;
+std::string pthat_max_manual;
 //#######################################################
 void Show();
 void CheckArg(int argc, char **argv);
@@ -28,7 +29,7 @@ int main(int argc, char **argv)
     std::cout << "\nSTART! 💨\n"
               << std::endl;
     RunPythia run(xml_filename, output_dirname);
-    run.Init();
+    run.Init(pthat_min_manual, pthat_max_manual);
     run.Exec();
     std::cout << "\nFINISH! 🏁\n"
               << std::endl;
@@ -49,6 +50,8 @@ int main(int argc, char **argv)
 
 void CheckArg(int argc, char **argv)
 {
+  pthat_min_manual = "";
+  pthat_max_manual = "";
   std::cout << "=========================================================" << std::endl;
   if (argc > 1 && !strcmp(argv[1], "test"))
   {
@@ -63,6 +66,12 @@ void CheckArg(int argc, char **argv)
     run_code = true;
     xml_filename = argv[1];
     output_dirname = argv[2];
+
+    if (argc > 4)
+    {
+      pthat_min_manual = argv[3];
+      pthat_max_manual = argv[4];
+    }
   }
   else
   {

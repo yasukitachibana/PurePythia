@@ -15,6 +15,7 @@ public:
   RunPythia(std::string xml_filename, std::string output_dirname);
   ~RunPythia();
   void Init();
+  void Init(std::string pthat_min_manual, std::string pthat_max_manual);  
   void Exec();
 
 private:

@@ -40,7 +40,7 @@ def Main(pthatbin_list, dir_of_this_code, exe, xml_path, out_dir, que, name):
       print('# record: ' +job_out)
       print('# error: ' +job_error)
 
-      command = os.path.join(dir_of_this_code,'JobMaster') + '"{}" "{}"'.format(dir_of_this_code, command)
+      command = os.path.join(dir_of_this_code,'JobMaster') + ' "{}" "{}"'.format(dir_of_this_code, command)
       command = GetSlurmCommand(que,jobname,job_out,job_error,command)
     print(command)
     os.system(command)

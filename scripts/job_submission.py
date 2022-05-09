@@ -15,7 +15,7 @@ def GetCommand(command,xml_path,out_dir,pthatbin):
 def GetSlurmCommand(que,jobname,job_out,job_error,command):
   return 'sbatch -q {} --time 720:00:00 --mem 24G --job-name {} -o {} -e {} -- {}'.format(que,jobname,job_out,job_error,command)
 
-def Main(pthatbin_list, exe, xml_path, out_dir, que, name):
+def Main(pthatbin_list, dir_of_this_code, exe, xml_path, out_dir, que, name):
 
   print('# Start Jobsubmission')  
   print('#------')  
@@ -38,7 +38,9 @@ def Main(pthatbin_list, exe, xml_path, out_dir, que, name):
       job_out = os.path.join(out_dir,'o_'+jobname+'.txt')
       job_error = os.path.join(out_dir,'e_'+jobname+'.txt')
       print('# record: ' +job_out)
-      print('# error: ' +job_error)      
+      print('# error: ' +job_error)
+
+      command = os.path.join(dir_of_this_code,'JobMaster') + '"{}" "{}"'.format(dir_of_this_code, command)
       command = GetSlurmCommand(que,jobname,job_out,job_error,command)
     print(command)
     os.system(command)
@@ -85,7 +87,9 @@ if __name__ == '__main__':
 
   #####################################################################
   # Run Code
-  Main(pthatbin_list, args.exe, args.xml, args.o, args.q, args.n)
-
+  Main(pthatbin_list, dir_of_this_code, args.exe, args.xml, args.o, args.q, args.n)
+  os.chdir(initial_path)
+  print('# You came back to')
+  print('#\t', initial_path)
   print('# Done!')
   print('#########################################\n')      

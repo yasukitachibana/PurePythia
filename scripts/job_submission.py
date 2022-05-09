@@ -10,7 +10,7 @@ def GetPthatFromYaml(yaml_file_path):
   return yaml_data_list['pt_hat_bins']
 
 def GetCommand(command,xml_path,out_dir,pthatbin):
-  return '{} {} {} {} {}'.format(command,xml_path,out_dir,str(pthatbin[0]),str(pthatbin[1]))
+  return '{} "{} {} {} {}"'.format(command,xml_path,out_dir,str(pthatbin[0]),str(pthatbin[1]))
 
 def GetSlurmCommand(que,jobname,job_out,job_error,command):
   return 'sbatch -q {} --time 720:00:00 --mem 24G --job-name {} -o {} -e {} {}'.format(que,jobname,job_out,job_error,command)

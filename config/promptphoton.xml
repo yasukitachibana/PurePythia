@@ -5,7 +5,7 @@
   <nEvents> 60000 </nEvents>
   <!-- <nEvents> 100 </nEvents> -->
   <pTHatMin>
-    <Item>1</Item>
+    <!-- <Item>1</Item>
     <Item>2</Item>
     <Item>3</Item>
     <Item>4</Item>
@@ -45,7 +45,7 @@
     <Item>240</Item>
     <Item>250</Item>
     <Item>260</Item>
-    <Item>270</Item>
+    <Item>270</Item> -->
     <Item>280</Item>
     <Item>290</Item>
     <Item>300</Item>
@@ -53,7 +53,7 @@
     <Item>400</Item>
     <Item>450</Item>
     <Item>500</Item>
-    <Item>550</Item>
+    <!-- <Item>550</Item>
     <Item>600</Item>
     <Item>700</Item>
     <Item>800</Item>
@@ -70,7 +70,7 @@
     <Item>1900</Item>
     <Item>2000</Item>
     <Item>2200</Item>
-    <Item>2400</Item>
+    <Item>2400</Item> -->
   </pTHatMin>
   <pTHatMax>
     <Item>2</Item>

@@ -2,7 +2,7 @@
 
 <purePythia>
 
-  <nEvents> 100000 </nEvents>
+  <nEvents> 60000 </nEvents>
   <!-- <nEvents> 100 </nEvents> -->
   <pTHatMin>
     <Item>1</Item>

@@ -141,7 +141,7 @@
     <Item>2</Item>
   </pTHatMax>
 
-  <hadronization>1</hadronization>
+  <hadronization>0</hadronization>
 
   <Pythia>
     <Item>Beams:eCM = 5020</Item>

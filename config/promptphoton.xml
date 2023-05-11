@@ -47,7 +47,7 @@
     <Item>260</Item>
     <Item>270</Item>
     <Item>280</Item> -->
-    <Item>290</Item>
+    <!-- <Item>290</Item>
     <Item>300</Item>
     <Item>350</Item>
     <Item>400</Item>
@@ -57,8 +57,8 @@
     <Item>600</Item>
     <Item>700</Item>
     <Item>800</Item>
-    <Item>900</Item>
-    <!-- <Item>1000</Item>
+    <Item>900</Item> -->
+    <Item>1000</Item>
     <Item>1100</Item>
     <Item>1200</Item>
     <Item>1300</Item>
@@ -70,7 +70,7 @@
     <Item>1900</Item>
     <Item>2000</Item>
     <Item>2200</Item>
-    <Item>2400</Item> -->
+    <Item>2400</Item>
   </pTHatMin>
   <pTHatMax>
     <!-- <Item>2</Item>
@@ -115,7 +115,7 @@
     <Item>270</Item>
     <Item>280</Item>
     <Item>290</Item> -->
-    <Item>300</Item>
+    <!-- <Item>300</Item>
     <Item>350</Item>
     <Item>400</Item>
     <Item>450</Item>
@@ -125,8 +125,8 @@
     <Item>700</Item>
     <Item>800</Item>
     <Item>900</Item>
-    <Item>1000</Item>
-    <!-- <Item>1100</Item>
+    <Item>1000</Item> -->
+    <Item>1100</Item>
     <Item>1200</Item>
     <Item>1300</Item>
     <Item>1400</Item>
@@ -138,7 +138,7 @@
     <Item>2000</Item>
     <Item>2200</Item>
     <Item>2400</Item>
-    <Item>2510</Item> -->
+    <Item>2510</Item>
   </pTHatMax>
   <hadronization>0</hadronization>
 

@@ -120,8 +120,8 @@ void RunPythia::ExecOnePtHatBin(int i)
   //-
   std::cout << "======================================================================================================" << std::endl;
   std::cout << "[RunPythia] Start RunPythia" << std::endl;
-//  std::cout << "Tune: " << pythia.Tune:pp << std::endl;
   std::cout << "Tune: " <<pythia.mode("Tune:pp") << std::endl;
+  //std::cout << "Proton PDF ponter: " << pythia.getPDFPtr(2212) << std::endl; 
   std::cout << "pTHat: " << pTHatMin[i] << "-" << pTHatMax[i] << " GeV/c" << std::endl;
   std::cout << "output particle list file: " << particle_list_filename << std::endl;
   std::cout << "output sigma_hard file: " << sigma_filename << std::endl;
